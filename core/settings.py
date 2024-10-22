@@ -86,12 +86,10 @@ WSGI_APPLICATION = 'core.wsgi.application'
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
 
-dj_database_url
-
 # Update the database configuration with the environment variable for DATABASE_URL
 DATABASES = {
     'default': dj_database_url.config(
-        default='postgres://charm:admin@localhost:5432/logistics'
+        default=os.environ.get('DATABASE_URL')
     )
 }
 
@@ -116,9 +114,11 @@ AUTH_PASSWORD_VALIDATORS = [
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
 LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'UTC'
-USE_I18N = False
-USE_L10N = False
-USE_TZ = False
+USE_I18N = True
+USE_L10N = True
+USE_TZ = True
+
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
